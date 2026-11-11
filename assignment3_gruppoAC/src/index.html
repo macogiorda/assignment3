@@ -38,7 +38,6 @@
             </select>
         </div>
 
-        <!-- Contenitore nascosto per Google Translate ignorato dagli screen reader -->
         <div id="google_translate_element" hidden aria-hidden="true"></div>
 
         <button
@@ -100,10 +99,10 @@
 </header>
 
 <main id="mainContent">
-    <section class="hero">
+    <section class="hero" aria-labelledby="heroHeading">
         <div class="hero-text">
             <p class="eyebrow">PIATTAFORMA DI CROWDFUNDING UNIVERSITARIO</p>
-            <h1>Il futuro si<br>costruisce <span>insieme.</span></h1>
+            <h1 id="heroHeading">Il futuro si<br>costruisce <span>insieme.</span></h1>
             <p>
                 UniTogether è lo spazio di <strong><abbr title="Raccolta collettiva e collaborativa di fondi, effettuata attraverso la rete, aperta a tutti coloro che decidono di finanziare progetti innovativi e imprese appena costituite." data-tooltip="Raccolta collettiva e collaborativa di fondi, effettuata attraverso la rete, aperta a tutti coloro che decidono di finanziare progetti innovativi e imprese appena costituite.">crowdfunding</abbr></strong> dove le idee nate in ambito universitario e territoriale trovano il sostegno economico della community. Dona per far crescere i progetti in cui credi o avvia la tua raccolta fondi per trasformarli in realtà.
             </p>
@@ -125,11 +124,11 @@
         </div>
     </section>
 
-    <section class="container section crowdfunding-section">
+    <section class="container section crowdfunding-section" aria-labelledby="crowdfundingHeading">
         <div class="section-title">
             <div>
                 <p class="eyebrow">SOSTEGNO COLLETTIVO</p>
-                <h2>Il valore del <span>crowdfunding.</span></h2>
+                <h2 id="crowdfundingHeading">Il valore del <span>crowdfunding.</span></h2>
             </div>
         </div>
 
@@ -149,25 +148,24 @@
         </div>
     </section>
 
-    <section class="projects-section">
+    <section class="projects-section" aria-labelledby="activeProjectsHeading">
         <div class="section-title">
             <div>
                 <p class="eyebrow">CAMPAGNE DI RACCOLTA FONDI ATTIVE</p>
-                <h2>Progetti da <span>far crescere.</span></h2>
+                <h2 id="activeProjectsHeading">Progetti da <span>far crescere.</span></h2>
             </div>
             <a href="progetti.html" class="btn dark-btn">Tutti i progetti <span aria-hidden="true">↗</span></a>
         </div>
 
-        <!-- Le prime tre schede vengono generate automaticamente dal JSON. -->
         <div class="project-grid" id="homeProjectGrid" aria-live="polite">
             <p>Caricamento progetti...</p>
         </div>
     </section>
 
-    <section class="call-to-action">
+    <section class="call-to-action" aria-labelledby="ctaHeading">
         <div>
             <p class="eyebrow">HAI UN'IDEA DA FINANZIARE?</p>
-            <h2>Lancia la tua campagna di crowdfunding.</h2>
+            <h2 id="ctaHeading">Lancia la tua campagna di crowdfunding.</h2>
             <p>Presenta il tuo progetto, definisci il budget necessario e coinvolgi le persone che possono aiutarti a realizzarlo.</p>
         </div>
         <a href="aggiungi.html" class="btn dark-btn">Lancia un progetto <span aria-hidden="true">↗</span></a>
