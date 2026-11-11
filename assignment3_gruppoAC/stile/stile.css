@@ -2639,3 +2639,19 @@ textarea {
     margin-bottom: 9px;
     width: 100%;
 }
+
+/* Correzione contrasto etichette card per MAUVE++ (SC 1.4.3) */
+.project-image span {
+    background: rgba(0, 0, 0, 0.45);
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: #ffffff !important;
+}
+
+.project-image-green {
+    background: #3b5323 !important; /* Verde scuro ad alto contrasto */
+}
+
+.project-image-blue {
+    background: #1b365d !important; /* Blu scuro ad alto contrasto */
+}
