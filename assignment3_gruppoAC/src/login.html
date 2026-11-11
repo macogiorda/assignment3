@@ -24,7 +24,7 @@
     <nav id="mainNav" aria-label="Menu principale">
         <div class="language-selector">
             <label for="languageSelect" class="sr-only">Seleziona lingua</label>
-            <select id="languageSelect" name="language" autocomplete="language" onchange="cambiaLinguaGoogle(this.value)" aria-label="Seleziona lingua">
+            <select id="languageSelect" name="language" autocomplete="language" onchange="cambiaLinguaGoogle(this.value)">
                 <option value="it">🇮🇹 IT</option>
                 <option value="en">🇬🇧 EN</option>
                 <option value="es">🇪🇸 ES</option>
@@ -145,8 +145,9 @@
                        name="username"
                        placeholder="Inserisci username o email"
                        autocomplete="username"
+                       aria-describedby="loginUserError"
                        required>
-                <small class="error" aria-live="polite"></small>
+                <small id="loginUserError" class="error" aria-live="polite"></small>
             </div>
 
             <div class="form-group">
@@ -158,6 +159,7 @@
                            name="password"
                            placeholder="Inserisci la password"
                            autocomplete="current-password"
+                           aria-describedby="loginPasswordError"
                            required>
 
                     <button type="button"
@@ -168,7 +170,7 @@
                     </button>
                 </div>
 
-                <small class="error" aria-live="polite"></small>
+                <small id="loginPasswordError" class="error" aria-live="polite"></small>
             </div>
 
             <div class="login-options">

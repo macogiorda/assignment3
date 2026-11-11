@@ -25,7 +25,7 @@
     <nav id="mainNav" aria-label="Menu principale">
         <div class="language-selector">
             <label for="languageSelect" class="sr-only">Seleziona lingua</label>
-            <select id="languageSelect" name="language" autocomplete="language" onchange="cambiaLinguaGoogle(this.value)" aria-label="Seleziona lingua">
+            <select id="languageSelect" name="language" autocomplete="language" onchange="cambiaLinguaGoogle(this.value)">
                 <option value="it">🇮🇹 IT</option>
                 <option value="en">🇬🇧 EN</option>
                 <option value="es">🇪🇸 ES</option>
@@ -204,9 +204,10 @@
                                autocomplete="off"
                                maxlength="80"
                                placeholder="Es. Un laboratorio per il futuro"
+                               aria-describedby="titleHint titleError"
                                required>
-                        <small>Un titolo breve, chiaro e riconoscibile.</small>
-                        <span class="field-error" aria-live="polite"></span>
+                        <small id="titleHint">Un titolo breve, chiaro e riconoscibile.</small>
+                        <span id="titleError" class="field-error" aria-live="polite"></span>
                     </div>
 
                     <div class="field-group">
@@ -224,8 +225,9 @@
                             <input type="text" id="projectUniversity" name="projectUniversity"
                                    autocomplete="organization"
                                    placeholder="Es. Università di Torino"
+                                   aria-describedby="universityError"
                                    required>
-                            <span class="field-error" aria-live="polite"></span>
+                            <span id="universityError" class="field-error" aria-live="polite"></span>
                         </div>
 
                         <div class="field-group">
@@ -233,8 +235,9 @@
                             <input type="text" id="projectLocation" name="projectLocation"
                                    autocomplete="address-level2"
                                    placeholder="Es. Torino"
+                                   aria-describedby="locationError"
                                    required>
-                            <span class="field-error" aria-live="polite"></span>
+                            <span id="locationError" class="field-error" aria-live="polite"></span>
                         </div>
 
                     </div>
@@ -252,8 +255,8 @@
 
                 <div class="wizard-panel" data-panel="1">
 
-                    <div class="field-group" role="radiogroup" aria-labelledby="categoryGroupLabel">
-                        <span id="categoryGroupLabel" class="group-label">Categoria del progetto *</span>
+                    <fieldset class="field-group fieldset-reset" aria-describedby="categoryError">
+                        <legend id="categoryGroupLabel" class="group-label">Categoria del progetto *</legend>
 
                         <div class="category-options">
 
@@ -292,7 +295,7 @@
                         </div>
 
                         <span class="field-error" id="categoryError" aria-live="polite"></span>
-                    </div>
+                    </fieldset>
 
                     <div class="field-row">
 
@@ -302,15 +305,19 @@
                                    autocomplete="off"
                                    min="1" max="10000000"
                                    step="1"
-                                   placeholder="Es. 5000" required>
-                            <span class="field-error" aria-live="polite"></span>
+                                   placeholder="Es. 5000"
+                                   aria-describedby="goalError"
+                                   required>
+                            <span id="goalError" class="field-error" aria-live="polite"></span>
                         </div>
 
                         <div class="field-group">
                             <label for="projectDeadline">Scadenza *</label>
                             <input type="date" id="projectDeadline" name="projectDeadline"
-                                   autocomplete="off" required>
-                            <span class="field-error" aria-live="polite"></span>
+                                   autocomplete="off"
+                                   aria-describedby="deadlineError"
+                                   required>
+                            <span id="deadlineError" class="field-error" aria-live="polite"></span>
                         </div>
 
                     </div>
@@ -337,10 +344,11 @@
                                   autocomplete="off"
                                   rows="3" maxlength="250"
                                   placeholder="Racconta la tua idea in poche parole..."
+                                  aria-describedby="shortCountHint shortDescError"
                                   required></textarea>
 
-                        <small><span id="shortCount">0</span>/250 caratteri</small>
-                        <span class="field-error" aria-live="polite"></span>
+                        <small id="shortCountHint"><span id="shortCount">0</span>/250 caratteri</small>
+                        <span id="shortDescError" class="field-error" aria-live="polite"></span>
                     </div>
 
                     <div class="field-group">
@@ -352,10 +360,11 @@
                                   autocomplete="off"
                                   rows="8" maxlength="3000"
                                   placeholder="Qual è il problema che vuoi risolvere? Qual è la tua soluzione? ..."
+                                  aria-describedby="descCountHint descError"
                                   required></textarea>
 
-                        <small><span id="descriptionCount">0</span>/3000 caratteri</small>
-                        <span class="field-error" aria-live="polite"></span>
+                        <small id="descCountHint"><span id="descriptionCount">0</span>/3000 caratteri</small>
+                        <span id="descError" class="field-error" aria-live="polite"></span>
                     </div>
 
                     <div class="field-group">
@@ -376,9 +385,10 @@
 
                         <input type="file" id="projectImage" name="projectImage"
                                autocomplete="off"
-                               accept="image/png,image/jpeg,image/webp">
+                               accept="image/png,image/jpeg,image/webp"
+                               aria-describedby="imageFormatHint">
 
-                        <small>
+                        <small id="imageFormatHint">
                             Formati ammessi: JPG, PNG e WEBP.
                             Dimensione massima: 2 MB.
                         </small>
@@ -418,7 +428,7 @@
                     <div id="projectReview" class="project-review"></div>
 
                     <div class="review-checkbox">
-                        <input type="checkbox" id="confirmProject" name="confirmProject" autocomplete="off">
+                        <input type="checkbox" id="confirmProject" name="confirmProject" autocomplete="off" aria-describedby="confirmError">
                         <label for="confirmProject">
                             Confermo che le informazioni inserite sono corrette
                             e che il progetto rispetta le condizioni di utilizzo. <strong>*</strong>
