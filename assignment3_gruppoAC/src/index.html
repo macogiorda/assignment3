@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UniTogether - Home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="../stile/stile.css">
     <script src="../js/app.js" defer></script>
@@ -29,7 +27,7 @@
     <nav id="mainNav" aria-label="Menu principale">
         <div class="language-selector">
             <label for="languageSelect" class="sr-only">Seleziona lingua</label>
-            <select id="languageSelect" name="language" autocomplete="language" onchange="cambiaLinguaGoogle(this.value)">
+            <select id="languageSelect" name="language" title="Seleziona lingua" aria-label="Seleziona lingua" autocomplete="language" onchange="cambiaLinguaGoogle(this.value)">
                 <option value="it">🇮🇹 IT</option>
                 <option value="en">🇬🇧 EN</option>
                 <option value="es">🇪🇸 ES</option>
@@ -38,6 +36,7 @@
             </select>
         </div>
 
+        <!-- Contenitore nascosto per Google Translate ignorato dagli screen reader -->
         <div id="google_translate_element" hidden aria-hidden="true"></div>
 
         <button
@@ -162,19 +161,4 @@
         </div>
     </section>
 
-    <section class="call-to-action" aria-labelledby="ctaHeading">
-        <div>
-            <p class="eyebrow">HAI UN'IDEA DA FINANZIARE?</p>
-            <h2 id="ctaHeading">Lancia la tua campagna di crowdfunding.</h2>
-            <p>Presenta il tuo progetto, definisci il budget necessario e coinvolgi le persone che possono aiutarti a realizzarlo.</p>
-        </div>
-        <a href="aggiungi.html" class="btn dark-btn">Lancia un progetto <span aria-hidden="true">↗</span></a>
-    </section>
-</main>
-
-<footer class="footer-simple">
-    © 2026 UniTogether · Privacy · Condizioni d'uso
-</footer>
-
-</body>
-</html>
+    <section class="call-to-action" aria-

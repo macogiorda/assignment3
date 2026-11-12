@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | UniTogether</title>
     <link rel="stylesheet" href="../stile/stile.css">
+    <style>
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 100%;
+        }
+        .password-box, .remember {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 100%;
+        }
+        label, input {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        .form-group input:not([type="checkbox"]) {
+            width: 100%;
+        }
+    </style>
     <script src="../js/app.js" defer></script>
 </head>
 <body class="auth-page">
@@ -24,7 +45,7 @@
     <nav id="mainNav" aria-label="Menu principale">
         <div class="language-selector">
             <label for="languageSelect" class="sr-only">Seleziona lingua</label>
-            <select id="languageSelect" name="language" autocomplete="language" onchange="cambiaLinguaGoogle(this.value)">
+            <select id="languageSelect" name="language" autocomplete="language" onchange="cambiaLinguaGoogle(this.value)" aria-label="Seleziona lingua">
                 <option value="it">🇮🇹 IT</option>
                 <option value="en">🇬🇧 EN</option>
                 <option value="es">🇪🇸 ES</option>
@@ -145,9 +166,8 @@
                        name="username"
                        placeholder="Inserisci username o email"
                        autocomplete="username"
-                       aria-describedby="loginUserError"
                        required>
-                <small id="loginUserError" class="error" aria-live="polite"></small>
+                <small class="error" aria-live="polite"></small>
             </div>
 
             <div class="form-group">
@@ -159,7 +179,6 @@
                            name="password"
                            placeholder="Inserisci la password"
                            autocomplete="current-password"
-                           aria-describedby="loginPasswordError"
                            required>
 
                     <button type="button"
@@ -170,7 +189,7 @@
                     </button>
                 </div>
 
-                <small id="loginPasswordError" class="error" aria-live="polite"></small>
+                <small class="error" aria-live="polite"></small>
             </div>
 
             <div class="login-options">
