@@ -1330,11 +1330,11 @@ h1 {
    ========================= */
 
 html[data-theme="dark"] {
-    --bg: #151619;
-    --white: #222329;
-    --text: #f5f5f5;
-    --muted: #c2c6d0;
-    --border: #383941;
+    --bg: #121316;
+    --white: #1a1b20;
+    --text: #ffffff;
+    --muted: #dcdfe6;
+    --border: #555761;
     --green-dark: #8ab833;
 }
 
@@ -1356,7 +1356,10 @@ html[data-theme="dark"] .card,
 html[data-theme="dark"] .login-card,
 html[data-theme="dark"] .registration-card,
 html[data-theme="dark"] .illustration-card,
-html[data-theme="dark"] .project-content {
+html[data-theme="dark"] .project-content,
+html[data-theme="dark"] .wizard-sidebar,
+html[data-theme="dark"] .wizard-content,
+html[data-theme="dark"] .wizard-step {
     background-color: var(--white) !important;
     border-color: var(--border) !important;
     color: var(--text) !important;
@@ -1370,14 +1373,18 @@ html[data-theme="dark"] .illustration-card p,
 html[data-theme="dark"] .small-text,
 html[data-theme="dark"] .funding,
 html[data-theme="dark"] .eyebrow,
-html[data-theme="dark"] .hero-text > p:not(.eyebrow) {
+html[data-theme="dark"] .hero-text > p:not(.eyebrow),
+html[data-theme="dark"] .wizard-step small,
+html[data-theme="dark"] .wizard-help p,
+html[data-theme="dark"] .draft-status {
     color: var(--muted) !important;
 }
 
 html[data-theme="dark"] .project-card strong,
 html[data-theme="dark"] .card strong,
 html[data-theme="dark"] .funding strong,
-html[data-theme="dark"] .statistics strong {
+html[data-theme="dark"] .statistics strong,
+html[data-theme="dark"] .wizard-step strong {
     color: #ffffff !important;
 }
 
@@ -1428,9 +1435,9 @@ html[data-theme="dark"] .submenu-btn:hover {
 html[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
 html[data-theme="dark"] select,
 html[data-theme="dark"] textarea {
-    background-color: #1a1b20 !important; /* Leggermente più chiaro della card per staccarsi */
+    background-color: #121316 !important;
     color: #ffffff !important;
-    border: 1px solid #737785 !important; /* Bordo grigio chiaro ad alto contrasto */
+    border: 1px solid #737785 !important;
 }
 
 html[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus,
@@ -1443,7 +1450,7 @@ html[data-theme="dark"] textarea:focus {
 
 html[data-theme="dark"] .secondary-btn {
     color: #ffffff !important;
-    background-color: #151619 !important;
+    background-color: #121316 !important;
     border-color: var(--border) !important;
 }
 
@@ -1455,6 +1462,12 @@ html[data-theme="dark"] .site-header button {
 
 html[data-theme="dark"] .progress-track {
     background-color: #454650 !important;
+}
+
+html[data-theme="dark"] .wizard-step:not(.active) .step-number {
+    background-color: #2a2b32 !important;
+    color: #ffffff !important;
+    border-color: #555761 !important;
 }
 
 /* Stile icona profilo utente */
@@ -1640,6 +1653,10 @@ html[data-theme="dark"] .progress-track {
     background-color: #e6f2eb;
 }
 
+html[data-theme="dark"] .wizard-step.active {
+    background-color: #243428 !important;
+}
+
 .step-number {
     display: flex;
     align-items: center;
@@ -1679,6 +1696,10 @@ html[data-theme="dark"] .progress-track {
     padding: 1rem;
     border-radius: 0.75rem;
     background-color: #eef6f0;
+}
+
+html[data-theme="dark"] .wizard-help {
+    background-color: #1e251f !important;
 }
 
 .wizard-help strong {
@@ -1824,6 +1845,11 @@ html[data-theme="dark"] .progress-track {
     margin-bottom: 0;
 }
 
+html[data-theme="dark"] .category-option {
+    background-color: var(--white) !important;
+    color: var(--text) !important;
+}
+
 .category-option input[type="radio"] {
     position: absolute;
     top: 0.75rem;
@@ -1851,22 +1877,6 @@ html[data-theme="dark"] .progress-track {
 .category-option:has(input:checked) {
     outline: 2px solid var(--green-dark);
     border-color: var(--green-dark);
-}
-
-.category-option.green:has(input:checked) {
-    outline-color: #27864B;
-}
-
-.category-option.purple:has(input:checked) {
-    outline-color: #8052B8;
-}
-
-.category-option.blue:has(input:checked) {
-    outline-color: #2878C8;
-}
-
-.category-option.orange:has(input:checked) {
-    outline-color: #E87532;
 }
 
 /* IMMAGINE */
@@ -1931,6 +1941,10 @@ html[data-theme="dark"] .progress-track {
     margin-bottom: 1.5625rem;
 }
 
+html[data-theme="dark"] .review-notice {
+    background-color: #1e251f !important;
+}
+
 .review-notice > span {
     color: var(--green-dark);
     font-size: 1.4rem;
@@ -1956,40 +1970,6 @@ html[data-theme="dark"] .progress-track {
 
 .review-item strong {
     overflow-wrap: anywhere;
-}
-
-.review-image {
-    width: 100%;
-    max-height: 12.5rem;
-    object-fit: cover;
-    border-radius: 0.625rem;
-    margin-top: 0.625rem;
-}
-
-.review-checkbox {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.625rem;
-    margin-top: 1.5625rem;
-    font-size: 0.86rem;
-    line-height: 1.5;
-    cursor: pointer;
-}
-
-.review-checkbox input[type="checkbox"] {
-    margin-top: 0.25rem;
-    accent-color: var(--green-dark);
-}
-
-.review-checkbox label {
-    margin-bottom: 0;
-    cursor: pointer;
-}
-
-.review-error,
-.form-message {
-    color: var(--error, #a6261d);
-    font-size: 0.85rem;
 }
 
 /* NAVIGAZIONE */
@@ -2019,368 +1999,19 @@ html[data-theme="dark"] .progress-track {
     font: inherit;
 }
 
-.wizard-actions button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-@media (max-width: 850px) {
-    .add-project-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .wizard-sidebar {
-        position: static;
-    }
-
-    .wizard-steps {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .wizard-help {
-        display: none;
-    }
-}
-
-@media (max-width: 550px) {
-    .add-project-page {
-        padding: 2.1875rem 0.9375rem 3.75rem;
-    }
-
-    .wizard-content,
-    .wizard-sidebar {
-        padding: 1.1875rem;
-    }
-
-    .wizard-steps {
-        grid-template-columns: 1fr;
-    }
-
-    .field-row,
-    .category-options {
-        grid-template-columns: 1fr;
-    }
-
-    .wizard-content-header {
-        flex-direction: column;
-    }
-
-    .wizard-actions {
-        flex-wrap: wrap;
-    }
-
-    .required-note {
-        width: 100%;
-        order: -1;
-    }
-
-    .wizard-actions button {
-        flex: 1;
-    }
-}
-
-.project-owner-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.625rem;
-    margin: 1.125rem 0;
-}
-
-.project-owner-actions .btn {
-    display: inline-block;
-    padding: 0.625rem 1.0625rem;
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-    font-weight: 700;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.edit-project-btn {
-    background-color: #ffffff;
-    color: #1e6b3b;
-    border: 1px solid #1e6b3b;
-}
-
-.edit-project-btn:hover {
-    background-color: #e6f4ea;
-    color: #144928;
-    border-color: #144928;
-}
-
-.delete-project-btn {
-    background-color: #ffffff;
-    color: #a6261d;
-    border: 1px solid #a6261d;
-}
-
-.delete-project-btn:hover {
-    background-color: #fff0f0;
-    color: #7a1811;
-    border-color: #7a1811;
-}
-
-.project-owner-actions .delete-project-btn:hover {
-    background-color: #fff0f0 !important;
-    color: #7a1811 !important;
-    border-color: #7a1811 !important;
-}
-
-/* =========================================
-   STILI FORM DI DONAZIONE (Senza inline CSS)
-   ========================================= */
-
-#donationFormContainer {
-    margin-top: 0.9375rem;
-    padding: 1.25rem;
-    background-color: #f9f9f9;
-    color: #1a1e17;
-    border-radius: 0.5rem;
-    border: 1px solid #dddddd;
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-}
-
-.donation-heading {
-    margin-top: 0;
-    margin-bottom: 0.625rem;
-}
-
-.donation-group {
-    margin-bottom: 0.625rem;
-}
-
-.donation-label {
-    display: block;
-    margin-bottom: 0.3125rem;
-    font-size: 0.875rem;
-}
-
-.preset-amounts {
-    display: flex;
-    gap: 0.3125rem;
-    margin-bottom: 0.625rem;
-}
-
-.amount-btn {
-    flex: 1;
-    padding: 0.375rem;
-    border: 1px solid var(--border);
-    border-radius: 0.375rem;
-    background-color: #ffffff;
-    color: var(--text);
-    cursor: pointer;
-}
-
-.amount-btn.active,
-.amount-btn:hover {
-    background-color: var(--green-dark);
-    color: #ffffff;
-}
-
-.donation-input {
-    width: 100%;
-    padding: 0.5rem;
-    box-sizing: border-box;
-}
-
-.donation-checkbox-group {
-    margin-bottom: 0.625rem;
-    font-size: 0.875rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.donation-checkbox-group input[type="checkbox"] {
-    width: 1rem;
-    margin: 0;
-}
-
-.donation-checkbox-group label {
-    width: auto;
-    margin-bottom: 0;
-}
-
-.donation-submit-btn {
-    width: 100%;
-    padding: 0.625rem;
-    cursor: pointer;
-    background-color: var(--green-dark);
-    color: #ffffff;
-    border: 0;
-    border-radius: 0.5rem;
-    font-weight: 700;
-}
-
-.donation-message {
-    margin-top: 0.625rem;
-    font-weight: 700;
-    font-size: 0.875rem;
-    text-align: center;
-}
-
-#donationFormContainer label,
-#donationFormContainer h3,
-#donationFormContainer h4 {
-    color: inherit;
-}
-
-html[data-theme="dark"] #donationFormContainer {
+html[data-theme="dark"] .wizard-back {
     background-color: var(--white) !important;
     color: var(--text) !important;
     border-color: var(--border) !important;
 }
 
-html[data-theme="dark"] #donationFormContainer input[type="number"] {
-    background-color: var(--bg) !important;
-    color: var(--text) !important;
-    border-color: var(--border) !important;
+.wizard-actions button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
-html[data-theme="dark"] #donationFormContainer .amount-btn {
-    background-color: var(--bg) !important;
-    color: var(--text) !important;
-    border: 1px solid var(--border) !important;
-}
+/* ACCESSIBILITÀ E UTILITIES */
 
-html[data-theme="dark"] #donationFormContainer .amount-btn.active {
-    background-color: var(--green-dark) !important;
-    color: #151619 !important;
-}
-
-/* =========================================
-   CONTRASTO PULITO E BILANCIATO
-   ========================================= */
-
-.project-card,
-.card,
-.login-card,
-.registration-card,
-.illustration-card,
-.wizard-sidebar,
-.wizard-content {
-    border: 1px solid var(--border);
-    box-shadow: 0 5px 20px rgba(23, 61, 50, 0.05);
-}
-
-input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
-select,
-textarea {
-    border: 1px solid #d4d6cb;
-    background-color: #ffffff;
-    color: var(--text);
-}
-
-/* =========================================
-   SOLO IL BOTTONE "TORNA AI PROGETTI" (Isolato)
-   ========================================= */
-
-a.back-btn {
-    display: inline-flex !important;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.625rem 1rem !important;
-    background-color: #ffffff !important;
-    border: 1px solid #d4d6cb !important;
-    border-radius: 0.5rem !important;
-    color: #1a1e17 !important;
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-decoration: none !important;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08) !important;
-    transition: all 0.2s ease;
-}
-
-a.back-btn:hover {
-    background-color: #cbe665 !important;
-    border-color: #3b5323 !important;
-    color: #1a1e17 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12) !important;
-}
-
-html[data-theme="dark"] a.back-btn {
-    background-color: #222329 !important;
-    color: #ffffff !important;
-    border-color: #383941 !important;
-}
-
-html[data-theme="dark"] a.back-btn:hover {
-    background-color: #3b5323 !important;
-    color: #ffffff !important;
-}
-
-/* =========================================
-   SEZIONE CROWDFUNDING CENTRATA (HOME)
-   ========================================= */
-
-.crowdfunding-section {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.crowdfunding-section .section-title {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: left;
-}
-
-.crowdfunding-section .feature-grid {
-    text-align: center;
-}
-
-/* =========================================
-   TOOLTIP PERSONALIZZATO PER CROWDFUNDING
-   ========================================= */
-
-abbr[data-tooltip] {
-    position: relative;
-    text-decoration: underline dotted;
-    text-underline-offset: 0.25rem;
-    cursor: help;
-    color: var(--green-dark);
-    font-weight: 600;
-}
-
-abbr[data-tooltip]:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    top: 130%;
-    left: 0;
-    min-width: 12.5rem;
-    max-width: 17.5rem;
-    background-color: #1a1e17;
-    color: #ffffff;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.375rem;
-    font-size: 0.82rem;
-    font-weight: normal;
-    line-height: 1.4;
-    white-space: normal;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    pointer-events: none;
-}
-
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-    background-color: #ffffff !important;
-    color: #1a1e17 !important;
-}
-
-/* =========================================
-   SKIP LINK (Invisibile, appare solo con TAB)
-   ========================================= */
 .skip-link {
     position: absolute;
     top: -6.25rem;
@@ -2405,91 +2036,16 @@ abbr[data-tooltip]:hover::after {
     outline-offset: 2px !important;
 }
 
-/* =========================================
-   CLASSI DI UTILITÀ PER JS (Zero Stili Inline)
-   ========================================= */
-
-.msg-success {
-    color: var(--success, #3b5e22) !important;
-    font-weight: 700;
-}
-
-.msg-error {
-    color: var(--error, #a6261d) !important;
-    font-weight: 700;
-}
-
-.support-feedback {
-    font-weight: 700;
-    margin-top: 0.875rem;
-    text-align: center;
-}
-
-.percent-label {
-    display: block;
-}
-
-.project-image.has-cover {
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
     padding: 0;
+    margin: -1px;
     overflow: hidden;
-}
-
-.project-image .cover-img {
-    width: 100%;
-    height: 100%;
-    min-height: 10.625rem;
-    max-height: 16.25rem;
-    object-fit: cover;
-    display: block;
-    border-radius: inherit;
-}
-
-/* Classi di avanzamento progressBar (0% - 100%) senza style="width:..." */
-.w-0 { width: 0%; } .w-1 { width: 1%; } .w-2 { width: 2%; } .w-3 { width: 3%; } .w-4 { width: 4%; }
-.w-5 { width: 5%; } .w-6 { width: 6%; } .w-7 { width: 7%; } .w-8 { width: 8%; } .w-9 { width: 9%; }
-.w-10 { width: 10%; } .w-11 { width: 11%; } .w-12 { width: 12%; } .w-13 { width: 13%; } .w-14 { width: 14%; }
-.w-15 { width: 15%; } .w-16 { width: 16%; } .w-17 { width: 17%; } .w-18 { width: 18%; } .w-19 { width: 19%; }
-.w-20 { width: 20%; } .w-21 { width: 21%; } .w-22 { width: 22%; } .w-23 { width: 23%; } .w-24 { width: 24%; }
-.w-25 { width: 25%; } .w-26 { width: 26%; } .w-27 { width: 27%; } .w-28 { width: 28%; } .w-29 { width: 29%; }
-.w-30 { width: 30%; } .w-31 { width: 31%; } .w-32 { width: 32%; } .w-33 { width: 33%; } .w-34 { width: 34%; }
-.w-35 { width: 35%; } .w-36 { width: 36%; } .w-37 { width: 37%; } .w-38 { width: 38%; } .w-39 { width: 39%; }
-.w-40 { width: 40%; } .w-41 { width: 41%; } .w-42 { width: 42%; } .w-43 { width: 43%; } .w-44 { width: 44%; }
-.w-45 { width: 45%; } .w-46 { width: 46%; } .w-47 { width: 47%; } .w-48 { width: 48%; } .w-49 { width: 49%; }
-.w-50 { width: 50%; } .w-51 { width: 51%; } .w-52 { width: 52%; } .w-53 { width: 53%; } .w-54 { width: 54%; }
-.w-55 { width: 55%; } .w-56 { width: 56%; } .w-57 { width: 57%; } .w-58 { width: 58%; } .w-59 { width: 59%; }
-.w-60 { width: 60%; } .w-61 { width: 61%; } .w-62 { width: 62%; } .w-63 { width: 63%; } .w-64 { width: 64%; }
-.w-65 { width: 65%; } .w-66 { width: 66%; } .w-67 { width: 67%; } .w-68 { width: 68%; } .w-69 { width: 69%; }
-.w-70 { width: 70%; } .w-71 { width: 71%; } .w-72 { width: 72%; } .w-73 { width: 73%; } .w-74 { width: 74%; }
-.w-75 { width: 75%; } .w-76 { width: 76%; } .w-77 { width: 77%; } .w-78 { width: 78%; } .w-79 { width: 79%; }
-.w-80 { width: 80%; } .w-81 { width: 81%; } .w-82 { width: 82%; } .w-83 { width: 83%; } .w-84 { width: 84%; }
-.w-85 { width: 85%; } .w-86 { width: 86%; } .w-87 { width: 87%; } .w-88 { width: 88%; } .w-89 { width: 89%; }
-.w-90 { width: 90%; } .w-91 { width: 91%; } .w-92 { width: 92%; } .w-93 { width: 93%; } .w-94 { width: 94%; }
-.w-95 { width: 95%; } .w-96 { width: 96%; } .w-97 { width: 97%; } .w-98 { width: 98%; } .w-99 { width: 99%; }
-.w-100 { width: 100%; }
-
-/* =========================================
-   CORREZIONE DEFINITIVA DARK MODE WIZARD
-   ========================================= */
-html[data-theme="dark"] .wizard-sidebar,
-html[data-theme="dark"] .wizard-content,
-html[data-theme="dark"] .wizard-step {
-    background-color: #1e1f26 !important;
-    border-color: #383941 !important;
-    color: #f5f5f5 !important;
-}
-
-html[data-theme="dark"] .wizard-step strong {
-    color: #ffffff !important;
-}
-
-html[data-theme="dark"] .wizard-step small,
-html[data-theme="dark"] .wizard-help p,
-html[data-theme="dark"] .draft-status {
-    color: #c2c6d0 !important;
-}
-
-html[data-theme="dark"] .wizard-step:not(.active) .step-number {
-    background-color: #2a2b32 !important;
-    color: #f5f5f5 !important;
-    border-color: #454650 !important;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    background-color: #ffffff !important;
+    color: #1a1e17 !important;
 }
