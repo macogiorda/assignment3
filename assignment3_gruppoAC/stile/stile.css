@@ -1425,12 +1425,20 @@ html[data-theme="dark"] .submenu-btn:hover {
     background-color: var(--border) !important;
 }
 
-html[data-theme="dark"] input,
+html[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
 html[data-theme="dark"] select,
 html[data-theme="dark"] textarea {
-    background-color: var(--bg);
-    color: #ffffff;
-    border-color: var(--border);
+    background-color: #1a1b20 !important; /* Leggermente più chiaro della card per staccarsi */
+    color: #ffffff !important;
+    border: 1px solid #737785 !important; /* Bordo grigio chiaro ad alto contrasto */
+}
+
+html[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus,
+html[data-theme="dark"] select:focus,
+html[data-theme="dark"] textarea:focus {
+    border-color: var(--green-dark) !important;
+    outline: 3px solid #ffffff !important;
+    outline-offset: 2px !important;
 }
 
 html[data-theme="dark"] .secondary-btn {
